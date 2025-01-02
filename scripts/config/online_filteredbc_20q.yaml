@@ -1,0 +1,18 @@
+defaults:
+  - default
+  - _self_
+
+# checkpoint
+agent_type: "online_filteredbc"
+
+checkpoint_path: '../gpt2_bc_20q.pt'
+save_path: '../outputs/online_naive_dpo'
+
+# env
+env_name: twenty_questions
+env_load_path: '../20q_t5_oracle.pt'
+
+# wandb logging
+use_wandb: True
+project_name: 'dpo_naive_test_v2'
+run_name: 'online_filteredbc'

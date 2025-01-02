@@ -1,0 +1,55 @@
+cache_dir: '/home/yifei/.cache'
+
+wandb_key: ""
+huggingface_token: ""
+policy_lm: "gpt2"
+critic_lm: "roberta-base"
+use_baseline: False
+use_lora: False
+max_new_tokens: 32
+save_freq: 25
+eval_freq: 25
+# checkpoint
+agent_type: "online_filteredbc"
+checkpoint_path: '../gpt2_bc_20q.pt'
+save_path: '../outputs/test_gpu8'
+
+
+#training hyperparameters
+capacity: 100000 #replay buffer size
+rollout_size: 240  #number of rollout trajectories for each update
+bc_rollout_size: 60
+eval_size: 16 #number of trajectories for evaluation
+batch_size: 10
+iterations: 2000 #total number of iterations
+epochs: 2 #number of epochs for the critic each iteration
+actor_epochs: 2 #number of epochs for the actor each iteration
+bc_epochs: 5
+warmup_iter: 0 #number of iterations without updating the policy
+grad_accum_steps: 16
+do_sample: True
+temperature: 1.0
+critic_lr: 1e-5
+lm_lr: 5e-6
+env_idx: null #set to null if don't want to reset to a specific environment
+gamma: 0.95 #discount factor
+tau: 0.1 #soft update parameter
+max_grad_norm: 1.0
+dpo_weight: 1.0
+loss_type: 'hinge'
+label_smoothing: 0.3
+
+use_bfloat16: True
+clear: False
+use_ref: False
+update_term: 5
+use_mix: True
+update_ref: False
+# env
+env_name: twenty_questions
+env_load_path: '../20q_t5_oracle.pt'
+
+# wandb logging
+use_wandb: True
+project_name: 'offline_test'
+run_name: 'dpo_mix_hinge_lr5e6_gpu5'

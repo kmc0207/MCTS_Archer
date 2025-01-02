@@ -1,0 +1,19 @@
+defaults:
+  - default
+  - _self_
+
+# algorithm
+agent_type: "chai"
+
+checkpoint_path: '../gpt2_bc_20q.pt'
+save_path: '../outputs/chai'
+
+# env
+env_name: twenty_questions
+env_load_path: '../20q_t5_oracle.pt'
+
+# wandb logging
+use_wandb: True
+project_name: 'dpo_naive_test_v2'
+run_name: 'chai'
+eos_str: '\n'
